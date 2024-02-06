@@ -1,2 +1,13 @@
 # conversion_predictors
 The repo contains analysis on conversion predictors from sample customer data
+
+How to read the conversion_predictors Jupyter Notebook:
+1. Data Overview: cells 155-181: general understanding of the health of the dataset, missing values, outliers, etc. Age has about 20% missing values, need to implement a way to replace missing values
+2. Data Overview: cells 182-242: the dataset is visually analysed on three datasets with different methods of imputing missing age values: replacing with mean age, replacing with median age, and using a linear regression model to predict the missing age values. The charts do not indicate much difference between the methods, so the linear regression model is chosen for further analyses.
+3. Gender and Age Insights: cells 243-288: the assumption is that gender and age are likely to affect conversion. I create two ordinal features out of age and initial_fee_level: age_group and initial_fee_group to see if there are benefits in using the ordinal values over the continous values. The charts indicate some relationship between the initial_fee_level and credit_account_id columns and conversion.
+4. PCA: cells 289-327 and 354-392: I carry out 3 different PCAs: one-component PCA to see how much variance ratio one principal component will have and the weights of the features; two-component PCA to see if there is a boundary between converted and non-converted users; and an elbow method to see how many principal components explain what variance ratio and see if we can reduce dimensionality.
+   Cells 289-327 show PCAs for a dataset that contains the ordinal age_group and initial_fee_group features and omits the continuous age and initial_fee_level columns
+   Cells 354-392 show PCAs for a dataset that contains the continuous age and initial_fee_level features and omits the ordinal age_group and initial_fee_group columns
+5. Binary Classification: cells 328-353: I run two classification models to see if they can classify converted and non-converted users and which features will be important, will they match the ground truth that the EDA established? The first model is an XGBoost classifier and the second model is a logistic regression.
+   Cells 328-352 show an XGBoost and a logistic regression model trained on a dataset that contains the ordinal age_group and initial_fee_group features and omits the continuous age and initial_fee_level columns
+   Cells 353-392 show an XGBoost and a logistic regression model trained on a dataset that contains the continuous age and initial_fee_level features and omits the ordinal age_group and initial_fee_group columns
