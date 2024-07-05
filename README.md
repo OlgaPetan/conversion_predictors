@@ -1,5 +1,5 @@
-# conversion_predictors
-The repo contains analysis on conversion predictors from sample customer data. 
+# Conversion Predictors
+The repo contains analysis on conversion predictors from sample customer data. The models used to test performance and fit are XGboost and Logistic Regression.
 
 The **conversion_predictors.pdf** file is a deck with charts showing the most salient insights
 
